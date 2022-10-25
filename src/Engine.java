@@ -35,7 +35,7 @@ class Engine {
         try {
             double parsedOperand1 = Double.parseDouble(operand1);
             double parsedOperand2 = Double.parseDouble(operand2);
-            switch (operator) {
+            switch (operator.toLowerCase()) {
                 case "+" -> result = "" + (parsedOperand1 + parsedOperand2);
                 case "\u00D7" -> result = "" + (parsedOperand1 * parsedOperand2);
                 case "\u02D7" -> result = "" + (parsedOperand1 - parsedOperand2);
