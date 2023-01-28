@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class ButtonHolder extends JButton {
     private final String type;
@@ -34,9 +36,7 @@ class ButtonHolder extends JButton {
 
     static Map<String, ButtonHolder> getAll() {
         Map<String, ButtonHolder> map = new HashMap<>();
-        for (int i = 0; i <= 9; i++) {
-            map.put("" + i, new ButtonHolder("numeric", "" + i, "" + i, "" + i));
-        }
+        IntStream.rangeClosed(0, 9).forEach(i -> map.put("" + i, new ButtonHolder("numeric", "" + i, "" + i, "" + i)));
         //operators keys
         map.put("add", new ButtonHolder("operator", "add", "+", "+"));
         map.put("sub", new ButtonHolder("operator", "subtract", "\u02D7", "\u02D7"));
@@ -70,24 +70,15 @@ class ButtonHolder extends JButton {
     }
 
     static ArrayList<String> getMapKeysByType(Map<String, ButtonHolder> buttonHolderMap, String type) {
-        ArrayList<String> keyList = new ArrayList<>();
-        for (String mapKey : buttonHolderMap.keySet()) {
-            ButtonHolder buttonHolder = buttonHolderMap.get(mapKey);
-            if (buttonHolder.type.equalsIgnoreCase(type)) {
-                keyList.add(mapKey);
-            }
-        }
-        return keyList;
+        return new ArrayList<>(buttonHolderMap.keySet().stream()
+                .filter(mapKey -> buttonHolderMap.get(mapKey).type.equalsIgnoreCase(type)).toList());
     }
 
     static ArrayList<String> getScreenTextListByType(Map<String, ButtonHolder> buttonHolderMap, String type) {
-        ArrayList<String> textList = new ArrayList<>();
-        for (String mapKey : buttonHolderMap.keySet()) {
-            ButtonHolder buttonHolder = buttonHolderMap.get(mapKey);
-            if (buttonHolder.type.equalsIgnoreCase(type)) {
-                textList.add(buttonHolder.screenText);
-            }
-        }
-        return textList;
+        ArrayList<String> textLists = new ArrayList<>();
+        buttonHolderMap.keySet().stream()
+                .filter(mapKey -> buttonHolderMap.get(mapKey).type.equalsIgnoreCase(type))
+                .forEach(textList -> textLists.add(buttonHolderMap.get(textList).screenText));
+        return textLists;
     }
 }

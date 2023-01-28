@@ -12,10 +12,6 @@ class ElementContainer extends JFrame {
         return buttonHolderMap;
     }
 
-    public void setButtonHolderMap(Map<String, ButtonHolder> buttonHolderMap) {
-        this.buttonHolderMap = buttonHolderMap;
-    }
-
     private JPanel keyPad = new JPanel();
     private final JPanel footer = new JPanel();
 
@@ -117,9 +113,7 @@ class ElementContainer extends JFrame {
     }
 
     private void prepareButtons(ArrayList<String> buttonHolderMapKeys, Color bgColor) {
-        for (String key : buttonHolderMapKeys) {
-            this.prepareButtonByKey(key, bgColor);
-        }
+        buttonHolderMapKeys.forEach(key-> this.prepareButtonByKey(key, bgColor));
     }
 
     private void prepareButtonByKey(String key, Color bgColor) {

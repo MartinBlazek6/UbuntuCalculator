@@ -13,7 +13,7 @@ class Engine {
             case "square" -> result = "" + (inputValue * inputValue);
             case "cube" -> result = "" + (inputValue * inputValue * inputValue);
             case "square_root" -> result = "" + (Math.sqrt(inputValue));
-            case "one_by_n" -> result = "" + ((double) 1 / inputValue);
+            case "one_by_n" -> result = "" + (1 / inputValue);
             case "ln" -> result = "" + Math.log(inputValue);
             case "log" -> result = "" + Math.log10(inputValue);
         }
