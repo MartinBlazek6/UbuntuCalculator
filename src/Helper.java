@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 class Helper {
     final static Color darkGrey = new Color(28 , 28, 28);
@@ -25,21 +26,10 @@ class Helper {
     final static double OUTPUT_DISPLAY_RATIO = 0.7;
 
     static String getFoundOperator(String str, ArrayList<String> keys){
-        for(String key:keys){
-            if(str.contains(key)){
-                return key;
-            }
-        }
-        return "";
+        return keys.stream().filter(str::contains).findFirst().orElse("");
     }
 
     static boolean isLastChar(String string, ArrayList<String> elements){
-        String lastChar = string.substring(string.length()-1);
-        for(String element:elements){
-            if(lastChar.equalsIgnoreCase(element)){
-                return true;
-            }
-        }
-        return false;
+        return elements.stream().filter(string.substring(string.length()-1)::equalsIgnoreCase).isParallel();
     }
 }

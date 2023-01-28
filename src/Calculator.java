@@ -12,9 +12,8 @@ class Calculator extends ElementContainer implements ActionListener {
     }
 
     private void addActionListenerToAllButton() {
-        for (String key : this.getButtonHolderMap().keySet()) {
-            this.getButtonHolderMap().get(key).addActionListener(this);
-        }
+        this.getButtonHolderMap().keySet().forEach(key -> this.getButtonHolderMap().get(key).addActionListener(this));
+
     }
 
     @Override
