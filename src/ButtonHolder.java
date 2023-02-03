@@ -48,7 +48,7 @@ class ButtonHolder extends JButton {
         //number modifier keys
         map.put("point", new ButtonHolder("number_modifier", "point", ".", "."));
         //Command keys
-        map.put("delete", new ButtonHolder("command", "delete", "DEL", ""));
+        map.put("delete", new ButtonHolder("command", "delete", "⌫", ""));
         map.put("clear", new ButtonHolder("command", "clear", "C", ""));
         map.put("exit", new ButtonHolder("command", "exit", "EXIT", ""));
 
